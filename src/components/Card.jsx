@@ -1,28 +1,24 @@
-import React from "react";
+import React from 'react';
+
 function Card(){
-
-    const data = [
-        {image: "https://images.unsplash.com/photo-1512469082103-409afe900e9a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fG1vZGVsc3xlbnwwfHwwfHx8MA%3D%3D" , name: "Meera Ratia", description:"Lorem ipsum dolor sit amet."},
-        {image: "https://plus.unsplash.com/premium_photo-1664882424626-f2f4cb557527?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fG1vZGVsc3xlbnwwfHwwfHx8MA%3D%3D", name:"Ipsita Raina", description:"Lorem ipsum dolor sit amet consectetur."},
-        {image: "https://images.unsplash.com/photo-1617632679997-4382a0f0ff78?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fG1vZGVsc3xlbnwwfHwwfHx8MA%3D%3D", name: "Rubina Sasse", description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit."}
+    const songs = [
+        {name:'Ishaqzaade', description:'Lorem ipsum dolor sit amet consectetur adipisicing elit.'},
+        {name:'Meet', description:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam, sunt?'},
+        {name:'Billo Rani', description:'Lorem ipsum dolor sit.'}
     ]
-
+    const downloadButton = ()=>{
+        alert("Download starting in 10 sec");
+    }
     return (
-        <div className="w-full h-screen flex py-[2.5%] justify-center gap-8 bg-zinc-400">
-            {data.map((elem, index)=>(
-                <div key={index} className='w-52 rounded-md overflow-hidden'>
-                    <div className='w-52 h-32 bg-zinc-200 '>
-                        <img className='w-full h-full object-cover' src={elem.image} alt="" />
-                    </div>
-                    <div className='rounded-md rounded-t-none text w-full h-1/6 px-3 py-4 font-["open_sans"] bg-yellow-200'>
-                        <h2 className='font-black'>{elem.name}</h2>
-                        <p className='text-xs mt-2'>{elem.description}</p>
-                    </div>
+        <div className='w-full h-screen bg-lime-900 px-10 py-8 flex flex-col gap-4'>
+            {songs.map((elem, index)=>(
+                <div key={index} className='px-2 py-1 w-[30%] bg-slate-50 rounded-md flex flex-col'>
+                    <h1 className='song font-semibold text-xl'>{elem.name}</h1>
+                    <p className='text-xs mt-2'>{elem.description}</p>
+                    <button onMouseOver={downloadButton } className='download mx-auto mb-2 px-2 py-2 rounded-lg mt-2 text-sm bg-blue-500 text-neutral-200'>Download Now</button>
                 </div>
             ))}
-            
         </div>
-        
     )
 }
 export default Card;

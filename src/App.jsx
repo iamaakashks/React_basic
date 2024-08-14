@@ -7,7 +7,7 @@ function App(){
       {/* <div>
         {data.map((elem, index)=>(<div key={index} className='px-3 py-4 bg-zinc-300 rounded-md w-fit'>{elem}</div>))}
       </div> */}
-      <h1>Hello</h1>
+      <h1>made with ❤️ by Aakash</h1>
     </>
   )
 }
