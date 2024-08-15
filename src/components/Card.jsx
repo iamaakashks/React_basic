@@ -10,7 +10,7 @@ function Card(){
         alert("Download starting in 10 sec");
     }
     return (
-        <div className='w-full h-screen bg-lime-900 px-10 py-8 flex flex-col gap-4'>
+        <div className='w-full h-screen bg-gray-300 px-10 py-8 flex flex-col gap-4'>
             {songs.map((elem, index)=>(
                 <div key={index} className='px-2 py-1 w-[30%] bg-slate-50 rounded-md flex flex-col'>
                     <h1 className='song font-semibold text-xl'>{elem.name}</h1>
