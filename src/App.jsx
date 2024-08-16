@@ -65,16 +65,86 @@
 
 // export default App;
 
-import React , {useState} from 'react';
+// import React , {useState} from 'react';
+// function App(){
+//   const [val, setVal] = useState([1, 2, 3, 4, 5]);
+//   return (
+//     <div className='p-4'>
+//       {val.map((items, index)=>{
+//         return <h1 key={index}>{items}</h1>
+//       })}
+//       <button onClick={()=>setVal(()=>val.filter((item, indices)=> item%2 !== 0))} type='button' className='px-3 py-1 bg-red-500 text-xs text-white rounded-full'>Click</button>
+//     </div>
+//   )
+// }
+// export default App;
+
+
+// import React, {useState} from 'react';
+// function App(){
+//   // const [val, setVal] = useState([1, 2, 3, 4, 5, 6]);
+//   const [val, setVal] = useState([
+//     {name: "Harsh", age: 24},
+//     {name: "Shivam", age:25},
+//     {name: "kohli", age: 32}]);
+//   return (
+//   <div className='p-4'>
+//     {val.map((items, index)=>(
+//       <div key={index}>
+//         <h1>{items.name}</h1>
+//         <h2>{items.age}</h2>
+//       </div>
+//     ))}
+//     <button onClick={()=>setVal(()=>val.map(items=> items.name === "Shivam"? ({name: "Shivam", age: 26}): items))} type='button' className='px-3 py-1 bg-red-500 text-xs text-white rounded-full'>Click</button>
+//     {/* <button onClick={()=>{
+//       return setVal([...val, val[val.length-1]+1])
+//     }} type='button' className='px-3 py-1 bg-red-500 text-xs text-white rounded-full'>Click</button> */}
+//   </div>
+//   )
+// }
+
+// export default App;
+
+// import React, {useState} from 'react';
+
+// function App(){
+//   const [val, setVal] = useState([
+//     {name: "Aakash", age: 21},
+//     {name: "Ankit", age: 22},
+//     {name: "Shivani", age:24}
+//   ]);
+//   return (
+//     <div className='p-4'>
+//       {val.map((items, index)=>{
+//         return <div key={index}>
+//           <h1>{items.name}</h1>
+//           <h1>{items.age}</h1>
+//         </div>
+//       })}
+//       <button onClick={()=>setVal(()=>val.map((items, indices)=> items.name.toLowerCase() === "Ankit".toLowerCase() ? ({name: "Ankit", age: 23}) : items))} type='button' className='px-4 py-2 text-sm rounded-full bg-red-500 text-white'>Click</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+import React, {useState} from 'react';
+import { VscArrowRight } from "react-icons/vsc";
+
 function App(){
-  const [val, setVal] = useState([1, 2, 3, 4, 5]);
+  const [val, setVal] = useState(false);
   return (
-    <div className='p-4'>
-      {val.map((items, index)=>{
-        return <h1 key={index}>{items}</h1>
-      })}
-      <button onClick={()=>setVal(()=>val.filter((item, indices)=> indices != 2))} type='button' className='px-3 py-1 bg-red-500 text-xs text-white rounded-full'>Click</button>
+    <div className='w-full h-screen bg-zinc-500 flex justify-center items-center'>
+      <div className='relative w-80 h-60  bg-zinc-200 rounded-lg flex overflow-hidden'>
+        <img className={`${val === false? "-translate-x-[0%]" : "-translate-x-[100%]"} transition-transform duration-500 ease-in shrink-0 w-full h-full object-cover`} src="https://images.unsplash.com/photo-1486496572940-2bb2341fdbdf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        <img className={`${val === false? "-translate-x-[0%]" : "-translate-x-[100%]"} transition-transform duration-500 ease-in shrink-0 w-full h-full object-cover`} src="https://images.unsplash.com/photo-1592853625601-bb9d23da12fc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        <span onClick={()=>setVal(()=> !val)} className='p-3 bg-[#dadada4b] rounded-full text-xl absolute top-52 active:bg-[#dadada3b] cursor-pointer left-1/2 translate-x-[-50%] translate-y-[-50%]'>
+          <VscArrowRight />
+        </span>
+      </div>
+      
     </div>
   )
 }
+
 export default App;
