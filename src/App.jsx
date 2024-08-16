@@ -128,22 +128,36 @@
 
 // export default App;
 
+// import React, {useState} from 'react';
+// import { VscArrowRight } from "react-icons/vsc";
+
+// function App(){
+//   const [val, setVal] = useState(false);
+//   return (
+//     <div className='w-full h-screen bg-zinc-500 flex justify-center items-center'>
+//       <div className='relative w-80 h-60  bg-zinc-200 rounded-lg flex overflow-hidden'>
+//         <img className={`${val === false? "-translate-x-[0%]" : "-translate-x-[100%]"} transition-transform duration-500 ease-in shrink-0 w-full h-full object-cover`} src="https://images.unsplash.com/photo-1486496572940-2bb2341fdbdf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+//         <img className={`${val === false? "-translate-x-[0%]" : "-translate-x-[100%]"} transition-transform duration-500 ease-in shrink-0 w-full h-full object-cover`} src="https://images.unsplash.com/photo-1592853625601-bb9d23da12fc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+//         <span onClick={()=>setVal(()=> !val)} className='p-3 bg-[#dadada4b] rounded-full text-xl absolute top-52 active:bg-[#dadada3b] cursor-pointer left-1/2 translate-x-[-50%] translate-y-[-50%]'>
+//           <VscArrowRight />
+//         </span>
+//       </div>
+      
+//     </div>
+//   )
+// }
+
+// export default App;
+
 import React, {useState} from 'react';
-import { VscArrowRight } from "react-icons/vsc";
+import NewCard from './components/NewCard.jsx';
 
 function App(){
-  const [val, setVal] = useState(false);
   return (
-    <div className='w-full h-screen bg-zinc-500 flex justify-center items-center'>
-      <div className='relative w-80 h-60  bg-zinc-200 rounded-lg flex overflow-hidden'>
-        <img className={`${val === false? "-translate-x-[0%]" : "-translate-x-[100%]"} transition-transform duration-500 ease-in shrink-0 w-full h-full object-cover`} src="https://images.unsplash.com/photo-1486496572940-2bb2341fdbdf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-        <img className={`${val === false? "-translate-x-[0%]" : "-translate-x-[100%]"} transition-transform duration-500 ease-in shrink-0 w-full h-full object-cover`} src="https://images.unsplash.com/photo-1592853625601-bb9d23da12fc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-        <span onClick={()=>setVal(()=> !val)} className='p-3 bg-[#dadada4b] rounded-full text-xl absolute top-52 active:bg-[#dadada3b] cursor-pointer left-1/2 translate-x-[-50%] translate-y-[-50%]'>
-          <VscArrowRight />
-        </span>
-      </div>
-      
-    </div>
+    <>
+      <NewCard name="Know More" color='bg-red-600' />
+      <NewCard name='Submit' color='bg-blue-500' />
+    </>
   )
 }
 
