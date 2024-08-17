@@ -149,16 +149,38 @@
 
 // export default App;
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import NewCard from './components/NewCard.jsx';
 
-function App(){
+export default function App(){
+  const data = [
+    {name: "Salman Khan", description: "Actor", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ3qcjwcwgXQ1G_GeuQLKxi7czVYIJ6dVKYA&s", friends: false},
+    {name: "M S Dhoni", description: "Cricketer", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvsqJuzAo5RCBarZyMBIJeB2D0M-MQgPy_bw&s", friends: false },
+    {name: "Neeraj Chopra", description: "Athelete", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOQFLzV8jG45ZcxqoTnwZxcLTDgMMLM-ymyQ&s", friends : false }
+  ]
+
+  const [realData, setRealData] = useState(data);
+
+  const handleFriendButton = (cardIndex)=>{
+    setRealData((previous)=>{
+      return previous.map((item, index)=>{
+        if(index === cardIndex){
+          return {...item, friends: !item.friends};
+        }
+        return item;
+      })
+    })
+  }
   return (
     <>
-      <NewCard name="Know More" color='bg-red-600' />
-      <NewCard name='Submit' color='bg-blue-500' />
+      <div className='w-full h-screen bg-red-200 flex justify-center items-center gap-2'>
+        {
+          realData.map((items, index)=>(
+            <NewCard handleClick={handleFriendButton} index={index} key={index} name={items.name} image={items.image} description={items.description} friendsStatus={items.friends}/>
+          ))
+        }
+      </div>
     </>
   )
 }
 
-export default App;
