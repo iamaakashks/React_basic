@@ -149,38 +149,71 @@
 
 // export default App;
 
-import React, { useState } from 'react';
-import NewCard from './components/NewCard.jsx';
+// import React, { useState } from 'react';
+// import NewCard from './components/NewCard.jsx';
 
+// export default function App(){
+//   const rawData = [
+//     {name: "Salman Khan", description: "Actor", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ3qcjwcwgXQ1G_GeuQLKxi7czVYIJ6dVKYA&s", friends: false},
+//     {name: "M S Dhoni", description: "Cricketer", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvsqJuzAo5RCBarZyMBIJeB2D0M-MQgPy_bw&s", friends: false },
+//     {name: "Neeraj Chopra", description: "Athelete", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOQFLzV8jG45ZcxqoTnwZxcLTDgMMLM-ymyQ&s", friends : false }
+//   ]
+
+//   const [realData, setRealData] = useState(rawData);
+
+//   const handleClick = (changingIndex)=>{
+//     return setRealData((prev)=>{
+//       return prev.map((item, index)=>{
+//         if(index === changingIndex) return {...item, friends: !item.friends}
+//         return item;
+//       })
+//     })
+//   }
+//   return (
+//     <>
+//       <div className='w-full h-screen bg-red-200 flex justify-center items-center gap-2'>
+//         {
+//           realData.map((items, index)=>(
+//             <NewCard handleClick={handleClick} index={index} key={index} name={items.name} image={items.image} description={items.description} friendsStatus={items.friends}/>
+//           ))
+//         }
+//       </div>
+//     </>
+//   )
+// }
+
+import React, {useState} from 'react';
+import Song from "./components/Song.jsx";
+import Navigation from "./components/Navigation.jsx";
 export default function App(){
-  const data = [
-    {name: "Salman Khan", description: "Actor", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ3qcjwcwgXQ1G_GeuQLKxi7czVYIJ6dVKYA&s", friends: false},
-    {name: "M S Dhoni", description: "Cricketer", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvsqJuzAo5RCBarZyMBIJeB2D0M-MQgPy_bw&s", friends: false },
-    {name: "Neeraj Chopra", description: "Athelete", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOQFLzV8jG45ZcxqoTnwZxcLTDgMMLM-ymyQ&s", friends : false }
+  const songData = [
+    {image: "https://c.saavncdn.com/604/Ishaqzaade-Hindi-2012-20190329145834-500x500.jpg", songName: "Ishaqzaade", artist: "Amit Trivedi, Javed Ali, Shreya Ghoshal", added: false},
+    {image: "https://c.saavncdn.com/525/Chennai-Express-2013-500x500.jpg", songName: "Titli", artist: "Chinmayi Sripada, Gopi Sunder", added: false},
+    {image: "https://c.saavncdn.com/764/Simran-Hindi-2017-20170911121920-500x500.jpg", songName: "Meet", artist: "Arijit Singh", added: false},
+    {image: "https://c.saavncdn.com/145/Goal-2007-500x500.jpg", songName: "Billo Rani", artist: "Pritam, Anand Raj, Richa Sharma", added: false},
+    {image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScPGY-hRycEtQLcFtgHrUlHRDeXJoBLcuW_w&s", songName: "Is This Love", artist: "Pritam, Mohit Chauhan, Shreya Ghosal", added: false}
   ]
 
-  const [realData, setRealData] = useState(data);
+  const [data, setData] = useState(songData);
 
-  const handleFriendButton = (cardIndex)=>{
-    setRealData((previous)=>{
-      return previous.map((item, index)=>{
-        if(index === cardIndex){
-          return {...item, friends: !item.friends};
-        }
-        return item;
+  const handleClick = (index)=>{
+    return setData((prev)=>{
+      return prev.map((items, ItemsIndex)=>{
+        if(ItemsIndex === index) return {...items, added: !items.added};
+        return items;
       })
     })
   }
   return (
-    <>
-      <div className='w-full h-screen bg-red-200 flex justify-center items-center gap-2'>
-        {
-          realData.map((items, index)=>(
-            <NewCard handleClick={handleFriendButton} index={index} key={index} name={items.name} image={items.image} description={items.description} friendsStatus={items.friends}/>
-          ))
-        }
+    <div className='w-full h-screen bg-zinc-300'>
+      <Navigation data={data} />
+      <div className='px-20 flex flex-row gap-16 flex-wrap'>
+        {data.map((items, index)=>{
+          return (
+            <Song key={index} data={items} click={handleClick} index={index} />
+          )
+        })}
       </div>
-    </>
+    </div>
   )
 }
-
