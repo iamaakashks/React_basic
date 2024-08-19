@@ -242,20 +242,36 @@
 // }
 
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
+// export default function App(){
+
+//   const [data, setData] = useState({name: ""});
+//   const handleSubmit = (event)=>{
+//     event.preventDefault();
+//     console.log(data.name);
+//   }
+//   return (
+//     <div className='p-4'>
+//       <form action="action/" onSubmit={(ev)=>handleSubmit(ev)}>
+//         <input onChange={(event)=>setData({name: event.target.value})} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='text' placeholder="name" />
+//         <input className='px-3 rounded-md bg-red-500 text-white' type='submit' value="Submit" />
+//       </form>
+//     </div>
+//   )
+// }
+
+
+import React from 'react';
+import {useForm} from 'react-hook-form';
 export default function App(){
-
-  const [data, setData] = useState({name: ""});
-  const handleSubmit = (event)=>{
-    event.preventDefault();
-    console.log(data.name);
-  }
+  const {register, handleSubmit} = useForm();
   return (
-    <div className='p-4'>
-      <form action="action/" onSubmit={(ev)=>handleSubmit(ev)}>
-        <input onChange={(event)=>setData({name: event.target.value})} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='text' placeholder="name" />
-        <input className='px-3 rounded-md bg-red-500 text-white' type='submit' value="Submit" />
+    <div className='p-5'>
+      <form action="" onSubmit={handleSubmit(data => console.log(data))}>
+        <input {...register('name')} type='text' className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' placeholder='name' />
+        <input {...register('email')} type='email' className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' placeholder='email' />
+        <input type='submit' className='px-3 rounded-md bg-red-500 text-white' />
       </form>
     </div>
   )
