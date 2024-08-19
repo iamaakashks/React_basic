@@ -182,38 +182,61 @@
 //   )
 // }
 
-import React, {useState} from 'react';
-import Song from "./components/Song.jsx";
-import Navigation from "./components/Navigation.jsx";
+// import React, {useState} from 'react';
+// import Song from "./components/Song.jsx";
+// import Navigation from "./components/Navigation.jsx";
+// export default function App(){
+//   const songData = [
+//     {image: "https://c.saavncdn.com/604/Ishaqzaade-Hindi-2012-20190329145834-500x500.jpg", songName: "Ishaqzaade", artist: "Amit Trivedi, Javed Ali, Shreya Ghoshal", added: false},
+//     {image: "https://c.saavncdn.com/525/Chennai-Express-2013-500x500.jpg", songName: "Titli", artist: "Chinmayi Sripada, Gopi Sunder", added: false},
+//     {image: "https://c.saavncdn.com/764/Simran-Hindi-2017-20170911121920-500x500.jpg", songName: "Meet", artist: "Arijit Singh", added: false},
+//     {image: "https://c.saavncdn.com/145/Goal-2007-500x500.jpg", songName: "Billo Rani", artist: "Pritam, Anand Raj, Richa Sharma", added: false},
+//     {image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScPGY-hRycEtQLcFtgHrUlHRDeXJoBLcuW_w&s", songName: "Is This Love", artist: "Pritam, Mohit Chauhan, Shreya Ghosal", added: false}
+//   ]
+
+//   const [data, setData] = useState(songData);
+
+//   const handleClick = (index)=>{
+//     return setData((prev)=>{
+//       return prev.map((items, ItemsIndex)=>{
+//         if(ItemsIndex === index) return {...items, added: !items.added};
+//         return items;
+//       })
+//     })
+//   }
+//   return (
+//     <div className='w-full h-screen bg-zinc-300'>
+//       <Navigation data={data} />
+//       <div className='px-20 flex flex-row gap-16 flex-wrap'>
+//         {data.map((items, index)=>{
+//           return (
+//             <Song key={index} data={items} click={handleClick} index={index} />
+//           )
+//         })}
+//       </div>
+//     </div>
+//   )
+// }
+
+import React, {useRef} from 'react';
+
 export default function App(){
-  const songData = [
-    {image: "https://c.saavncdn.com/604/Ishaqzaade-Hindi-2012-20190329145834-500x500.jpg", songName: "Ishaqzaade", artist: "Amit Trivedi, Javed Ali, Shreya Ghoshal", added: false},
-    {image: "https://c.saavncdn.com/525/Chennai-Express-2013-500x500.jpg", songName: "Titli", artist: "Chinmayi Sripada, Gopi Sunder", added: false},
-    {image: "https://c.saavncdn.com/764/Simran-Hindi-2017-20170911121920-500x500.jpg", songName: "Meet", artist: "Arijit Singh", added: false},
-    {image: "https://c.saavncdn.com/145/Goal-2007-500x500.jpg", songName: "Billo Rani", artist: "Pritam, Anand Raj, Richa Sharma", added: false},
-    {image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScPGY-hRycEtQLcFtgHrUlHRDeXJoBLcuW_w&s", songName: "Is This Love", artist: "Pritam, Mohit Chauhan, Shreya Ghosal", added: false}
-  ]
+  const name = useRef(null);
+  const age = useRef(null);
+  const email = useRef(null);
 
-  const [data, setData] = useState(songData);
-
-  const handleClick = (index)=>{
-    return setData((prev)=>{
-      return prev.map((items, ItemsIndex)=>{
-        if(ItemsIndex === index) return {...items, added: !items.added};
-        return items;
-      })
-    })
+  const handleSubmit = (event)=>{
+    event.preventDefault();
+    console.log(name.current.value, email.current.value, age.current.value);
   }
   return (
-    <div className='w-full h-screen bg-zinc-300'>
-      <Navigation data={data} />
-      <div className='px-20 flex flex-row gap-16 flex-wrap'>
-        {data.map((items, index)=>{
-          return (
-            <Song key={index} data={items} click={handleClick} index={index} />
-          )
-        })}
-      </div>
+    <div className='p-4'>
+      <form action="server/" onSubmit={(karent)=>handleSubmit(karent)}>
+        <input ref={name} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='text' placeholder="name" />
+        <input ref={email} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='email' placeholder="email" />
+        <input ref={age} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='number' placeholder="age" />
+        <input className='px-3 rounded-md bg-red-500 text-white' type='submit' value="Submit" />
+      </form>
     </div>
   )
 }
