@@ -1,24 +1,15 @@
 import React from 'react';
-
-function Card(){
-    const songs = [
-        {name:'Ishaqzaade', description:'Lorem ipsum dolor sit amet consectetur adipisicing elit.'},
-        {name:'Meet', description:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam, sunt?'},
-        {name:'Billo Rani', description:'Lorem ipsum dolor sit.'}
-    ]
-    const downloadButton = ()=>{
-        alert("Download starting in 10 sec");
-    }
+export default function Card({users, removeCard, key, id}){
+    const {name, email, image} = users;
     return (
-        <div className='w-full h-screen bg-gray-300 px-10 py-8 flex flex-col gap-4'>
-            {songs.map((elem, index)=>(
-                <div key={index} className='px-2 py-1 w-[30%] bg-slate-50 rounded-md flex flex-col'>
-                    <h1 className='song font-semibold text-xl'>{elem.name}</h1>
-                    <p className='text-xs mt-2'>{elem.description}</p>
-                    <button onMouseOver={downloadButton } className='download mx-auto mb-2 px-2 py-2 rounded-lg mt-2 text-sm bg-blue-500 text-neutral-200'>Download Now</button>
+            <div className='px-2 gap-2 rounded-md w-48 bg-slate-300 flex flex-col items-center'>
+                <div className='mt-2 h-20 w-20 bg-purple-400 overflow-hidden rounded-full'>
+                    <img className='w-full h-full object-cover' src={image} alt="" />
                 </div>
-            ))}
-        </div>
+                <h3 className='leading-none font-semibold text-lg'>{name}</h3>
+                <h4 className='leading-none font-medium text-sm opacity-40'>{email}</h4>
+                <p className='text-center text-xs leading-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, sit.</p>
+                <button onClick={()=>removeCard(id)} type='button' className='px-5 py-1 bg-red-500 text-white rounded-full text-sm font-semibold mb-2'>Remove</button>
+            </div>
     )
 }
-export default Card;
