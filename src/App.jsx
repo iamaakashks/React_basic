@@ -218,23 +218,43 @@
 //   )
 // }
 
-import React, {useRef} from 'react';
+// import React, {useRef} from 'react';
+
+// export default function App(){
+//   const name = useRef(null);
+//   const age = useRef(null);
+//   const email = useRef(null);
+
+//   const handleSubmit = (event)=>{
+//     event.preventDefault();
+//     console.log(name.current.value, email.current.value, age.current.value);
+//   }
+//   return (
+//     <div className='p-4'>
+//       <form action="server/" onSubmit={(karent)=>handleSubmit(karent)}>
+//         <input ref={name} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='text' placeholder="name" />
+//         <input ref={email} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='email' placeholder="email" />
+//         <input ref={age} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='number' placeholder="age" />
+//         <input className='px-3 rounded-md bg-red-500 text-white' type='submit' value="Submit" />
+//       </form>
+//     </div>
+//   )
+// }
+
+
+import React, { useState } from "react";
 
 export default function App(){
-  const name = useRef(null);
-  const age = useRef(null);
-  const email = useRef(null);
 
+  const [data, setData] = useState({name: ""});
   const handleSubmit = (event)=>{
     event.preventDefault();
-    console.log(name.current.value, email.current.value, age.current.value);
+    console.log(data.name);
   }
   return (
     <div className='p-4'>
-      <form action="server/" onSubmit={(karent)=>handleSubmit(karent)}>
-        <input ref={name} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='text' placeholder="name" />
-        <input ref={email} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='email' placeholder="email" />
-        <input ref={age} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='number' placeholder="age" />
+      <form action="action/" onSubmit={(ev)=>handleSubmit(ev)}>
+        <input onChange={(event)=>setData({name: event.target.value})} className='w-52 h-6 px-1 pb-1 leading-none mr-4 rounded-sm text-gray-900 border-2 border-gray-500' type='text' placeholder="name" />
         <input className='px-3 rounded-md bg-red-500 text-white' type='submit' value="Submit" />
       </form>
     </div>
