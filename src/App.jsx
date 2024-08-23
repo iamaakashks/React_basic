@@ -21,32 +21,13 @@
 // }
 
 
-
-import React, { useState } from 'react';
-import {Link, Route, Routes} from 'react-router-dom';
-import About from './components/About.jsx';
-import Home from './components/Home.jsx';
-import Contact from './components/Contact.jsx';
+import Nav from './components/Nav.jsx';
+import Routing from './utils/Routing.jsx';
 export default function App(){
   return (
     <>
-      <nav className='flex p-6 space-x-24 w-full justify-end bg-red-200 fixed top-0'>
-        <Link to='/'>
-          Home
-        </Link>
-        <Link to='/about'>
-          About
-        </Link>
-        <Link to='/contact'>
-          Contact
-        </Link>
-      </nav>
-
-      <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/contact' element={<Contact/>} />
-      </Routes>
+      <Nav />
+      <Routing />
     </>
   )
 }
