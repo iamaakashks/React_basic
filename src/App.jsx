@@ -33,8 +33,8 @@
 // }
 
 
-import axios from 'axios';
 import Show from './components/Show.jsx';
+import Services from './components/Services.jsx';
 import { Link, Routes, Route } from 'react-router-dom';
 import NewHome from './components/NewHome.jsx';
 export default function App(){
@@ -43,15 +43,16 @@ export default function App(){
   return (
     <>
       <nav className='p-4 flex gap-4'>
-        <button className='px-3 py-1 bg-gray-200 rounded-md'><Link to="/">Home</Link></button>
-        <button className='px-3 py-1 bg-gray-200 rounded-md'><Link to="/show">Show</Link></button>
+      <Link to="/"><button className='px-3 py-1 bg-gray-200 rounded-md'>Home</button></Link>
+      <Link to="/services" element={<Services/>}><button className='px-3 py-1 bg-gray-200 rounded-md'>Services</button></Link>
+      <Link to='/show'><button className='px-3 py-1 bg-gray-200 rounded-md'>Show</button></Link>
       </nav>
+      <hr />
       <Routes>
         <Route path='/' element={<NewHome/>}/>
         <Route path='/show' element={<Show/>}/>
+        <Route path='/services' element={<Services/>}/>
       </Routes>
-      <hr />
-      <Show />
     </>
   )
 }
